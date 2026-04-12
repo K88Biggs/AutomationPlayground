@@ -1,0 +1,23 @@
+{
+  "name": "automationplayground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "Playwright automation testing project with BDD support",
+  "scripts": {
+    "test": "cucumber-js",
+    "test:bdd": "cucumber-js",
+    "test:unit": "playwright test",
+    "test:api": "playwright test tests/api/posts.spec.js",
+    "report": "playwright show-report",
+    "headed": "playwright test --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/register": "^7.23.0",
+    "@cucumber/cucumber": "^10.0.1",
+    "@playwright/test": "^1.59.1"
+  }
+}
