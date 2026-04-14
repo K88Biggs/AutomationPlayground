@@ -4,12 +4,12 @@
   "main": "index.js",
   "description": "Playwright automation testing project with BDD support",
   "scripts": {
-    "test": "cucumber-js",
+    "test": "playwright test",
     "test:bdd": "cucumber-js",
-    "test:unit": "playwright test",
-    "test:api": "playwright test tests/api/posts.spec.js",
+    "test:e2e": "playwright test tests/e2e/playwright",
+    "test:api": "playwright test tests/api",
     "report": "playwright show-report",
-    "headed": "playwright test --headed"
+    "headed": "playwright test tests/e2e/playwright --headed"
   },
   "keywords": [],
   "author": "",

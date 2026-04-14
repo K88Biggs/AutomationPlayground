@@ -4,11 +4,12 @@
 // Run with: npx playwright test tests/api/delete.spec.js
 
 const { test, expect } = require('@playwright/test');
+const { apiFixtures } = require('../fixtures/api');
 
 // Test suite for DELETE operations
 test.describe('JSONPlaceholder DELETE Tests', () => {
   // Base URL for API endpoints
-  const baseURL = 'https://jsonplaceholder.typicode.com';
+  const baseURL = apiFixtures.postsBaseUrl;
 
   // Test DELETE endpoint behavior
   test('DELETE /posts/1 - validate delete behavior', async ({ request }) => {
