@@ -4,11 +4,12 @@
 // Run with: npm run test:api
 
 const { test, expect } = require('@playwright/test');
+const { apiFixtures } = require('../fixtures/api');
 
 // Test suite for JSONPlaceholder API
 test.describe('JSONPlaceholder API Tests', () => {
   // Base URL for all API calls in this suite
-  const baseURL = 'https://jsonplaceholder.typicode.com';
+  const baseURL = apiFixtures.postsBaseUrl;
 
   // Test GET single post endpoint
   test('GET /posts/1 - should return a single post', async ({ request }) => {
@@ -65,15 +66,8 @@ test.describe('JSONPlaceholder API Tests', () => {
   // Test POST create new post endpoint
   test('POST /posts - should create a new post', async ({ request }) => {
     // Define data for new post
-    const newPost = {
-      title: 'Interview test post',
-      body: 'This post was created by Playwright API test',
-      userId: 101
-    };
-
-    // Make POST request to create new post
     const response = await request.post(`${baseURL}/posts`, {
-      data: newPost
+      data: apiFixtures.newPost
     });
 
     expect(response.status()).toBe(201);
@@ -81,9 +75,9 @@ test.describe('JSONPlaceholder API Tests', () => {
     const body = await response.json();
 
     expect(body).toMatchObject({
-      title: newPost.title,
-      body: newPost.body,
-      userId: newPost.userId
+      title: apiFixtures.newPost.title,
+      body: apiFixtures.newPost.body,
+      userId: apiFixtures.newPost.userId
     });
 
     // Common API validation: created resource should include an id
